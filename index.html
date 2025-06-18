@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appel à Candidature</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Évaluation des Concepteurs</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" id="nav-bareme" class="active">Barème</a></li>
+                    <li><a href="#" id="nav-concepteurs">Concepteurs</a></li>
+                    <li><a href="#" id="nav-evaluation">Évaluation</a></li>
+                    <li><a href="#" id="nav-resultats">Résultats</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Section Barème -->
+            <section id="section-bareme" class="section active">
+                <h2>Gestion du Barème</h2>
+                <div class="card">
+                    <h3>Questions et Réponses</h3>
+                    <div id="questions-list">
+                        <!-- Les questions seront ajoutées ici dynamiquement -->
+                    </div>
+                    <button id="add-question" class="btn primary"><i class="fas fa-plus"></i> Ajouter une question</button>
+                    <button id="save-bareme" class="btn success"><i class="fas fa-save"></i> Enregistrer le barème</button>
+                </div>
+            </section>
+
+            <!-- Section Concepteurs -->
+            <section id="section-concepteurs" class="section">
+                <h2>Gestion des Concepteurs</h2>
+                <div class="card">
+                    <h3>Ajouter un concepteur</h3>
+                    <form id="form-concepteur">
+                        <div class="form-group">
+                            <label for="nom-concepteur">Nom du concepteur</label>
+                            <input type="text" id="nom-concepteur" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="specialite-concepteur">Spécialité</label>
+                            <input type="text" id="specialite-concepteur" required>
+                        </div>
+                        <button type="submit" class="btn success"><i class="fas fa-user-plus"></i> Ajouter</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3>Liste des concepteurs</h3>
+                    <div id="concepteurs-list">
+                        <!-- Les concepteurs seront ajoutés ici dynamiquement -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Évaluation -->
+            <section id="section-evaluation" class="section">
+                <h2>Évaluation d'un Concepteur</h2>
+                <div class="card">
+                    <div id="evaluation-header">
+                        <h3>Sélectionner un concepteur</h3>
+                        <select id="select-concepteur">
+                            <option value="">-- Choisir un concepteur --</option>
+                            <!-- Les concepteurs seront ajoutés ici dynamiquement -->
+                        </select>
+                    </div>
+                    <div id="evaluation-form" class="hidden">
+                        <!-- Le formulaire d'évaluation sera généré dynamiquement -->
+                    </div>
+                    <button id="save-evaluation" class="btn success hidden"><i class="fas fa-check-circle"></i> Enregistrer l'évaluation</button>
+                </div>
+            </section>
+
+            <!-- Section Résultats -->
+            <section id="section-resultats" class="section">
+                <h2>Résultats des Évaluations</h2>
+                <div class="card">
+                    <h3>Classement des concepteurs</h3>
+                    <div id="resultats-list">
+                        <!-- Les résultats seront ajoutés ici dynamiquement -->
+                    </div>
+                </div>
+                <div id="details-evaluation" class="card hidden">
+                    <h3>Détails de l'évaluation</h3>
+                    <div id="details-content">
+                        <!-- Les détails seront ajoutés ici dynamiquement -->
+                    </div>
+                    <button id="close-details" class="btn secondary"><i class="fas fa-times"></i> Fermer</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-actions">
+                <button id="btn-reset" class="btn danger"><i class="fas fa-trash-alt"></i> Réinitialiser l'application</button>
+                <button id="btn-export-results" class="btn success"><i class="fas fa-file-export"></i> Exporter les résultats</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Templates pour la génération dynamique -->
+    <template id="template-question">
+        <div class="question-item" data-id="{{id}}">
+            <div class="question-header">
+                <h4>Question <span class="question-number">{{number}}</span></h4>
+                <div class="question-actions">
+                    <button class="btn-icon edit-question"><i class="fas fa-edit"></i></button>
+                    <button class="btn-icon delete-question"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+            <div class="question-content">
+                <div class="form-group">
+                    <label>Intitulé de la question</label>
+                    <input type="text" class="question-text" value="{{text}}" required>
+                </div>
+                <div class="reponses-list">
+                    <!-- Les réponses seront ajoutées ici dynamiquement -->
+                </div>
+                <button class="btn secondary add-reponse"><i class="fas fa-plus"></i> Ajouter une réponse</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-reponse">
+        <div class="reponse-item" data-id="{{id}}">
+            <div class="form-group">
+                <label>Réponse</label>
+                <input type="text" class="reponse-text" value="{{text}}" required>
+            </div>
+            <div class="form-group">
+                <label>Score</label>
+                <input type="number" class="reponse-score" value="{{score}}" required min="0">
+            </div>
+            <button class="btn-icon delete-reponse"><i class="fas fa-times"></i></button>
+        </div>
+    </template>
+
+    <template id="template-concepteur-item">
+        <div class="concepteur-item" data-id="{{id}}">
+            <div class="concepteur-info">
+                <h4>{{nom}}</h4>
+                <p>{{specialite}} {{#if evaluation}}<span class="badge-evalue">Évalué</span>{{/if}}</p>
+            </div>
+            <div class="concepteur-actions">
+                <button class="btn-icon edit-concepteur"><i class="fas fa-edit"></i></button>
+                <button class="btn-icon delete-concepteur"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-evaluation-question">
+        <div class="evaluation-question" data-id="{{id}}">
+            <h4>{{number}}. {{text}}</h4>
+            <div class="evaluation-reponses">
+                <!-- Les réponses seront ajoutées ici dynamiquement -->
+            </div>
+        </div>
+    </template>
+
+    <template id="template-evaluation-reponse">
+        <div class="evaluation-reponse">
+            <label for="reponse-{{id}}">{{text}} ({{score}} points)</label>
+            <input type="radio" name="question-{{questionId}}" id="reponse-{{id}}" value="{{id}}" data-score="{{score}}">
+        </div>
+    </template>
+
+    <template id="template-resultat-item">
+        <div class="resultat-item" data-id="{{id}}">
+            <div class="resultat-rank">{{rank}}</div>
+            <div class="resultat-info">
+                <h4>{{nom}}</h4>
+                <p>{{specialite}}</p>
+            </div>
+            <div class="resultat-score">{{score}} points</div>
+            <div class="resultat-actions">
+                <button class="btn-icon view-details"><i class="fas fa-eye"></i></button>
+                <button class="btn-icon btn-export-details" data-id="{{id}}"><i class="fas fa-file-export"></i></button>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-detail-item">
+        <div class="detail-item">
+            <h4>{{number}}. {{questionText}}</h4>
+            <p><strong>Réponse:</strong> {{reponseText}}</p>
+            <p><strong>Score:</strong> {{score}} points</p>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    
+    <footer style="text-align: center; margin-top: 20px; padding: 10px; color: #666; font-size: 0.8rem;">
+        &copy; Copyright I.K 2025
+    </footer>
+</body>
+</html>
