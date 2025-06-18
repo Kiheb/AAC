@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "nom": "Jean Dupont",
+    "specialite": "Développeur Frontend",
+    "evaluation": {
+      "date": "2023-11-15T10:30:00.000Z",
+      "reponses": [
+        {
+          "questionId": 1,
+          "reponseId": 1,
+          "score": 10
+        },
+        {
+          "questionId": 2,
+          "reponseId": 6,
+          "score": 7
+        },
+        {
+          "questionId": 3,
+          "reponseId": 10,
+          "score": 7
+        }
+      ]
+    },
+    "score": 24
+  },
+  {
+    "id": 2,
+    "nom": "Marie Martin",
+    "specialite": "Développeur Backend",
+    "evaluation": {
+      "date": "2023-11-16T14:45:00.000Z",
+      "reponses": [
+        {
+          "questionId": 1,
+          "reponseId": 2,
+          "score": 7
+        },
+        {
+          "questionId": 2,
+          "reponseId": 5,
+          "score": 10
+        },
+        {
+          "questionId": 3,
+          "reponseId": 9,
+          "score": 10
+        }
+      ]
+    },
+    "score": 27
+  },
+  {
+    "id": 3,
+    "nom": "Ahmed Benali",
+    "specialite": "Designer UX/UI",
+    "evaluation": null,
+    "score": 0
+  }
+]

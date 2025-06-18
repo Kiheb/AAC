@@ -1,0 +1,82 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "text": "Qualité du code",
+      "reponses": [
+        {
+          "id": 1,
+          "text": "Excellent - Code propre, bien documenté et optimisé",
+          "score": 10
+        },
+        {
+          "id": 2,
+          "text": "Bon - Code fonctionnel avec quelques améliorations possibles",
+          "score": 7
+        },
+        {
+          "id": 3,
+          "text": "Moyen - Code fonctionnel mais peu optimisé",
+          "score": 4
+        },
+        {
+          "id": 4,
+          "text": "Insuffisant - Code peu lisible et mal structuré",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "Respect des délais",
+      "reponses": [
+        {
+          "id": 5,
+          "text": "Excellent - Livraison avant la date prévue",
+          "score": 10
+        },
+        {
+          "id": 6,
+          "text": "Bon - Livraison à la date prévue",
+          "score": 7
+        },
+        {
+          "id": 7,
+          "text": "Moyen - Léger retard avec justification",
+          "score": 4
+        },
+        {
+          "id": 8,
+          "text": "Insuffisant - Retard important sans justification",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "Créativité et innovation",
+      "reponses": [
+        {
+          "id": 9,
+          "text": "Excellent - Solutions très innovantes et créatives",
+          "score": 10
+        },
+        {
+          "id": 10,
+          "text": "Bon - Bonnes idées et approches intéressantes",
+          "score": 7
+        },
+        {
+          "id": 11,
+          "text": "Moyen - Solutions conventionnelles mais efficaces",
+          "score": 4
+        },
+        {
+          "id": 12,
+          "text": "Insuffisant - Manque d'originalité et d'innovation",
+          "score": 1
+        }
+      ]
+    }
+  ]
+}
